@@ -24,7 +24,9 @@ public class JWCoin {
         blockchain.add(new Block("this is third coin", blockchain.get(1).hash));
         blockchain.get(2).mineBlock(difficulty);
 
-        System.out.println("\nBlockchain is Valid: " + checkChainValid());
+        System.out.println("Blockchain is Valid: " + checkChainValidation());
+
+
     }
 
     /**
@@ -32,7 +34,7 @@ public class JWCoin {
      *
      * @return block validation
      */
-    public static Boolean checkChainValid() {
+    public static Boolean checkChainValidation() {
         Block currentBlock;
         Block previousBlock;
 

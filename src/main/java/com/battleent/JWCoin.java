@@ -1,5 +1,7 @@
 package com.battleent;
 
+import com.google.gson.GsonBuilder;
+
 import java.util.ArrayList;
 
 public class JWCoin {
@@ -25,6 +27,10 @@ public class JWCoin {
         blockchain.get(2).mineBlock(difficulty);
 
         System.out.println("check BlockChain validation : " + checkChainValidation());
+
+        String blockChainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
+        System.out.println("\n====== Coins ======");
+        System.out.println(blockChainJson);
     }
 
     /**

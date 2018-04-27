@@ -23,12 +23,14 @@ public class Block {
      * @param difficulty mining difficulty
      */
     public void mineBlock(int difficulty) {
-        String target = new String(new char[difficulty]).replace('\0', '0'); //Create a string with difficulty * "0"
-        while(!hash.substring(0, difficulty).equals(target)) {
-            nonce ++;
-            hash = getBlockHash();
+        synchronized (this) {
+            String target = new String(new char[difficulty]).replace('\0', '0'); //Create a string with difficulty * "0"
+            while (!hash.substring(0, difficulty).equals(target)) {
+                nonce++;
+                hash = getBlockHash();
+            }
+            System.out.println("Block Mined!!! : " + hash);
         }
-        System.out.println("Block Mined!!! : " + hash);
     }
 
     /**
@@ -38,10 +40,10 @@ public class Block {
      */
     public String getBlockHash() {
         return Sha256.hash(
-               previousHash +
-               Long.toString(timeStamp) +
-               Integer.toString(nonce) +
-                       data
+                previousHash +
+                        Long.toString(timeStamp) +
+                        Integer.toString(nonce) +
+                        data
         );
     }
 }

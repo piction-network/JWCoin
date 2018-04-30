@@ -11,8 +11,8 @@ public class Transaction {
     public float value;
     public byte[] signature; // this is to prevent anybody else from spending funds in our wallet.
 
-    public ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
-    public ArrayList<TransactionOutput> outputs = new ArrayList<TransactionOutput>();
+    public ArrayList<TransactionInput> inputs = new ArrayList<>();
+    public ArrayList<TransactionOutput> outputs = new ArrayList<>();
 
     private static int sequence = 0; // a rough count of how many transactions have been generated.
 
@@ -49,7 +49,7 @@ public class Transaction {
     //Returns true if new transaction could be created.
     public boolean processTransaction() {
 
-        if(verifiySignature() == false) {
+        if(!verifiySignature()) {
             System.out.println("#Transaction Signature failed to verify");
             return false;
         }

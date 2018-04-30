@@ -13,7 +13,7 @@ public class TransactionOutput {
         this.reciepient = reciepient;
         this.value = value;
         this.parentTransactionId = parentTransactionId;
-        this.id = Sha256.hash(ECDSAS.getStringFromKey(reciepient)+Float.toString(value)+parentTransactionId);
+        this.id = Sha256.hash(ECDSAS.getStringFromKey(reciepient) + Float.toString(value)+parentTransactionId);
     }
 
     //Check if coin belongs to you

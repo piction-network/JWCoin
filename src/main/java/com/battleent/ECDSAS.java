@@ -30,7 +30,7 @@ public class ECDSAS {
             ecdsaVerify.initVerify(publicKey);
             ecdsaVerify.update(data.getBytes());
             return ecdsaVerify.verify(signature);
-        }catch(Exception e) {
+        } catch(Exception e) {
             throw new RuntimeException(e);
         }
     }

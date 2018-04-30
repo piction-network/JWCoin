@@ -44,6 +44,7 @@ public class Wallet {
         }
         return total;
     }
+
     //Generates and returns a new transaction from this wallet.
     public Transaction sendFunds(PublicKey _recipient, float value) {
         if(getBalance() < value) { //gather balance and check funds.
@@ -51,7 +52,7 @@ public class Wallet {
             return null;
         }
         //create array list of inputs
-        ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
+        ArrayList<TransactionInput> inputs = new ArrayList<>();
 
         float total = 0;
         for (Map.Entry<String, TransactionOutput> item: UTXOs.entrySet()){

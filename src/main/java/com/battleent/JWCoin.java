@@ -9,13 +9,13 @@ import java.util.HashMap;
 public class JWCoin {
 
     private static ArrayList<Block> blockchain = new ArrayList<>();
-    public static ArrayList<Wallet> wallets = new ArrayList<>();
-    public static HashMap<String, TransactionOutput> UTXOs = new HashMap<String,TransactionOutput>(); //list of all unspent transactions.
+    private static ArrayList<Wallet> wallets = new ArrayList<>();
+    public static HashMap<String, TransactionOutput> UTXOs = new HashMap<>(); //list of all unspent transactions.
 
     public static int difficulty = 5;
     public static float minimumTransaction = 0.1f;
 
-    public static Transaction transaction;
+    private static Transaction transaction;
 
     /**
      * Jw-Coin main process

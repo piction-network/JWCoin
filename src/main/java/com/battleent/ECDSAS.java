@@ -9,7 +9,7 @@ import java.util.Base64;
 public class ECDSAS {
     public static byte[] applyECDSASig(PrivateKey privateKey, String input) {
         Signature dsa;
-        byte[] output = new byte[0];
+        byte[] output;
         try {
             dsa = Signature.getInstance("ECDSA", "BC");
             dsa.initSign(privateKey);

@@ -11,7 +11,7 @@ public class Block {
     private long timeStamp;
     private int nonce;
 
-    public ArrayList<Transaction> transactions = new ArrayList<Transaction>(); //our data will be a simple message.
+    public ArrayList<Transaction> transactions = new ArrayList<>(); //our data will be a simple message.
 
     public Block(String data, String previousHash) {
         this.data = data;
@@ -55,7 +55,7 @@ public class Block {
         //process transaction and check if valid, unless block is genesis block then ignore.
         if(transaction == null) return false;
         if((previousHash != "0")) {
-            if((transaction.processTransaction() != true)) {
+            if((!transaction.processTransaction())) {
                 System.out.println("Transaction failed to process. Discarded.");
                 return false;
             }

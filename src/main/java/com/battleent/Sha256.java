@@ -14,7 +14,7 @@ public class Sha256 {
 
             //convert the byte to hex format method 1
             byte hash[] = mDigest.digest(input.getBytes("UTF-8"));
-            StringBuffer hexString = new StringBuffer(); // hexidecimal
+            StringBuilder hexString = new StringBuilder(); // hexidecimal
             for (int i = 0; i < hash.length; i++) {
                 String hex = Integer.toHexString(0xff & hash[i]);
                 if(hex.length() == 1) hexString.append('0');

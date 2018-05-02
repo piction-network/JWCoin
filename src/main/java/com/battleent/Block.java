@@ -54,7 +54,7 @@ public class Block {
     public boolean addTransaction(Transaction transaction) {
         //process transaction and check if valid, unless block is genesis block then ignore.
         if(transaction == null) return false;
-        if((previousHash != "0")) {
+        if((!previousHash.equals(JWCoin.startHash))) {
             if((!transaction.processTransaction())) {
                 System.out.println("Transaction failed to process. Discarded.");
                 return false;

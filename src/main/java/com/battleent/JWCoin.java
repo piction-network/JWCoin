@@ -14,6 +14,7 @@ public class JWCoin {
 
     public static int difficulty = 5;
     public static float minimumTransaction = 0.1f;
+    public static final String startHash = "0";
 
     private static Transaction transaction;
 
@@ -33,7 +34,7 @@ public class JWCoin {
         //create genesis transaction, which sends 100 NoobCoin to walletA:
         transaction = new Transaction(coinWallet.publicKey, wallets.get(0).publicKey, 100f, null);
         transaction.generateSignature(coinWallet.privateKey);	 //manually sign the genesis transaction
-        transaction.transactionId = "0"; //manually set the transaction id
+        transaction.transactionId = startHash; //manually set the transaction id
         transaction.outputs.add(new TransactionOutput(transaction.reciepient, transaction.value, transaction.transactionId)); //manually add the Transactions Output
         UTXOs.put(transaction.outputs.get(0).id, transaction.outputs.get(0)); //its important to store our first transaction in the UTXOs list.
 
@@ -58,10 +59,8 @@ public class JWCoin {
         System.out.println("\nWalletA's balance is: " + wallets.get(0).getBalance());
         System.out.println("WalletB's balance is: " + wallets.get(1).getBalance());
 
-        /**
-         * check blocks validations
-         */
-        checkChainValidation();
+        // check blocks validations
+        System.out.println("\nBlockchain is valid : " + checkChainValidation());
     }
 
     /**
@@ -151,8 +150,6 @@ public class JWCoin {
                 }
             }
         }
-
-        System.out.println("\nBlockchain is valid");
         return true;
     }
 }
